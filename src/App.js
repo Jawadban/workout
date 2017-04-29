@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import GoogleMapStatic from './googleStaticMap.js';
 import LogUserData from './LogUserData.js'
