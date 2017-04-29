@@ -37,12 +37,12 @@ class SignUp extends React.Component {
   //     });
   // }
 
-  componentDidMount() {
-    //this is to check if someone else is not logged into facebook using same details
-    FB.getLoginStatus(function(response) {
-      statusChangeCallback(response);
-    });
-  }
+  // componentDidMount() {
+  //   //this is to check if someone else is not logged into facebook using same details
+  //   FB.getLoginStatus(function(response) {
+  //     statusChangeCallback(response);
+  //   });
+  // }
 
   facebookLoginHandle(event) {
 
