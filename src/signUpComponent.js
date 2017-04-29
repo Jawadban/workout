@@ -37,7 +37,16 @@ class SignUp extends React.Component {
   //     });
   // }
 
+  componentDidMount() {
+    //this is to check if someone else is not logged into facebook using same details
+    FB.getLoginStatus(function(response) {
+      statusChangeCallback(response);
+    });
+  }
+
   facebookLoginHandle(event) {
+
+
     var provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithRedirect(provider).then(function(result) {
       // This gives you a Facebook Access Token. You can use it to access the Facebook API.
