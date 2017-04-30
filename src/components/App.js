@@ -14,7 +14,7 @@ import SignOut from './authComponents/SignoutComponent.js'
 import {getGeoLocation,  totalDistanceTravelled} from './googleMapsComponents/getUserCoordsFunctions.js'
 import FB from 'fb';
 import {config} from './authComponents/firebaseAuthConfig.js'
-import AllUserData from './renderComponents/RenderUserDataComponent.js'
+import AllUserData from './renderComponents/UserProflieInfoCard.js'
 import StartRunning from './exerciseComponents/RunningComponent.js'
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
@@ -42,6 +42,7 @@ class App extends React.Component {
       intervalId: null,
       timerId: null,
       timeStamp: new Date(),
+      totalDistanceTravelled: 0,
     }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -77,7 +78,10 @@ class App extends React.Component {
       this.setState({
         intervalId: setInterval(
           function () {
-            getGeoLocation ()
+            getGeoLocation (),
+            thisInst.setState({
+              totalDistanceTravelled: totalDistanceTravelled
+            })
             console.log(coord, 'These are the user coords')
             //console.log(thisInst.state.coords, 'SSSETTTT STTATE COORDS')
           }
@@ -256,7 +260,7 @@ class App extends React.Component {
             <Card>
               <CardHeader
                 title={showNameIfLoggedin.displayName}
-                subtitle={totalDistanceTravelled + " Miles Run "}
+                subtitle={this.state.totalDistanceTravelled.toFixed(4) + " Miles Run "}
                 avatar={showNameIfLoggedin.photoURL}
               />     
                 <RaisedButton label="Start Running" primary={true} onClick={this.handleSubmit}></RaisedButton>
@@ -269,12 +273,12 @@ class App extends React.Component {
         </ul>
         {
           this.state.coords[0] && this.state.user ?
-            <AllUserData coords={this.state.coords} userData={totalDistanceTravelled} 
+            <AllUserData coords={this.state.coords} userData={this.state.totalDistanceTravelled} 
             name={showNameIfLoggedin.displayName} pic={showNameIfLoggedin.photoURL}/> : false
         }
         {
           this.state.coords.length > 0 && this.state.user ?
-            <AllUserData coords={this.state.coords} userData={totalDistanceTravelled}/> : false
+            <AllUserData coords={this.state.coords} userData={this.state.totalDistanceTravelled}/> : false
         }
         { 
           this.state.coords.length > 0 && this.state.user ?
@@ -282,7 +286,7 @@ class App extends React.Component {
             <ul>
               <h1 style={{color: 'white'}}><span style={{color: 'red'}}>Dani</span> in <span style={{color: 'pink'}}>Tokoyo</span></h1>
             </ul>
-            <AllUserData coords={[{Latitude :35.604561, Longitude: 139.7901791}]} userData={totalDistanceTravelled}/>
+            <AllUserData coords={[{Latitude :35.604561, Longitude: 139.7901791}]} userData={this.state.totalDistanceTravelled}/>
           </div>
           : null
         }
