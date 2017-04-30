@@ -264,7 +264,7 @@ class App extends React.Component {
                 avatar={showNameIfLoggedin.photoURL}
               />     
                 <RaisedButton label="Start Running" primary={true} onClick={this.handleSubmit}></RaisedButton>
-                <RaisedButton label="Push Ups /\ \//\//\ /\" primary={true} onClick={this.handleSubmit} ><Link to="/PushUps"/></RaisedButton>
+                <Link to="/PushUps"><RaisedButton label="Push Ups /\ \//\//\ /\" primary={true} ></RaisedButton></Link>
 
             </Card> 
               </MuiThemeProvider>
