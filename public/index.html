@@ -1,32 +1,10 @@
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>WorkOut App!</title>
-  </head>
-  <body> 	
-		<script>
-			//facebook login
-		  window.fbAsyncInit = function() {
-		    FB.init({
-		      appId      : '257454958042143',
-		      cookie     : true,
-		      xfbml      : true,
-		      version    : 'v2.8'
-		    });
-		    FB.AppEvents.logPageView();   
-		  };
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Full Workout</title>
+</head>
+<body>
+	<div id='root'></div>
 
-		  (function(d, s, id){
-		     var js, fjs = d.getElementsByTagName(s)[0];
-		     if (d.getElementById(id)) {return;}
-		     js = d.createElement(s); js.id = id;
-		     js.src = "//connect.facebook.net/en_US/sdk.js";
-		     fjs.parentNode.insertBefore(js, fjs);
-		   }(document, 'script', 'facebook-jssdk'));
-		</script>
-
-    <div id="root"></div>
-  </body>
+</body>
 </html>

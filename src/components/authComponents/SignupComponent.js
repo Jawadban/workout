@@ -3,7 +3,7 @@ import * as firebase from 'firebase';
 import Divider from 'material-ui/Divider';
 import Paper from 'material-ui/Paper';
 import TextField from 'material-ui/TextField';
-
+import FB from'fb';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
 
@@ -40,6 +40,7 @@ class SignUp extends React.Component {
   // componentDidMount() {
   //   //this is to check if someone else is not logged into facebook using same details
   //   FB.getLoginStatus(function(response) {
+  //     console.log(response)
   //     statusChangeCallback(response);
   //   });
   // }
@@ -193,14 +194,3 @@ class SignUp extends React.Component {
 }
 
 export default SignUp;
-          // <button onClick={this.facebookLoginHandle} style={{float: 'left'}} >Login With Facebook</button>
-          // <input type="submit" value="SignUp" />
-
-          // <label>
-          //   Name:
-          //   <input type="text" name='userName' value={this.state.userName} onChange={this.handleChange} />
-          //   Email:
-          //   <input type="email" name='email' value={this.state.email} onChange={this.handleChange} />
-          //   Password:
-          //   <input type="password" name='password' value={this.state.password} onChange={this.handleChange} />
-          // </label>

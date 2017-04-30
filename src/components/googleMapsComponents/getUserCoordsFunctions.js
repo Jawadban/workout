@@ -1,4 +1,4 @@
-import {coord} from './App.js' 
+import {coord} from '../App.js' 
 export let totalDistanceTravelled = 0;
 
 //This Function gets the user location coordinates from their browser and push them into coord array
@@ -26,7 +26,7 @@ export const getGeoLocation = function () {
   navigator.geolocation.getCurrentPosition(success, error, options);
 
   if (coord[coord.length -2] && coord[coord.length -1]) {
-    var distanceBetweenLastTwoPoints = distance(/*37.7632954, -122.4857721,*/ coord[coord.length -3].Latitude, coord[coord.length -3].Longitude, coord[coord.length -1].Latitude, coord[coord.length -1].Longitude)
+    var distanceBetweenLastTwoPoints = distance(37.7632954, -122.4857721,/* coord[coord.length -3].Latitude, coord[coord.length -3].Longitude,*/ coord[coord.length -1].Latitude, coord[coord.length -1].Longitude)
     
     // 1 step is .0005 of a mile so only add if last two coordinates are 1 step away
     if (distanceBetweenLastTwoPoints > 0.0005) {

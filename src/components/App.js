@@ -1,21 +1,21 @@
 import React, { Component } from 'react';
 import './App.css';
-import GoogleMapStatic from './googleStaticMap.js';
-import LogUserData from './LogUserData.js'
+import GoogleMapStatic from './googleMapsComponents/CurrentLocationMap.js';
+import LogUserData from './renderComponents/LogUserData.js'
 import { Router, Route, Link, hashHistory } from 'react-router'
-import GoogleWholeRoute from './googleMapWholeRoute.js'
+import GoogleWholeRoute from './googleMapsComponents/WholeRoute.js'
 //import { withGoogleMap } from "react-google-maps";
 //import Map from 'google-maps-react'
 import * as firebase from 'firebase';
 // import firebaseui from ('firebaseui');
-import SignUp from './signUpComponent.js'
-import LogIn from './loginComponent.js'
-import SignOut from './SignOut.js'
-import {getGeoLocation,  totalDistanceTravelled} from './GetUserCoords.js'
+import SignUp from './authComponents/SignupComponent.js'
+import LogIn from './authComponents/LoginComponent.js'
+import SignOut from './authComponents/SignoutComponent.js'
+import {getGeoLocation,  totalDistanceTravelled} from './googleMapsComponents/getUserCoordsFunctions.js'
 import FB from 'fb';
-import {config} from './FireBaseAutConfig.js'
-import AllUserData from './RenderUserData.js'
-import StartRunning from './StartRunning.js'
+import {config} from './authComponents/firebaseAuthConfig.js'
+import AllUserData from './renderComponents/RenderUserDataComponent.js'
+import StartRunning from './exerciseComponents/RunningComponent.js'
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
@@ -293,13 +293,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-
-              // <button className='buttn' onClick={this.handleSubmit}>Start Running</button>
-
-          // { (this.state.user) ? 
-          //   <StartRunning /> : false
-          // }
-                //<ul role="nav">
-               //   <li><Link to="/PushUps">PushUps</Link></li>
-                //</ul>
