@@ -5,9 +5,6 @@ Its a Real Time Workout platform for running with your friends which renders you
 
 Stack used is React.js, Google Firebase real time database and authentication, Node.js.
 
-
-In order to run this app, you need to install all the dependancies by running npm install. 
-
 Facebook Auth works in development but needs permissions in production mode in Heroku which is bing resolved but regular login works. 
 
 Please enable your brouser to share your location and give it a second to start taking the user coordinates. 
