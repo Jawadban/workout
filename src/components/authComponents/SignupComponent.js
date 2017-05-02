@@ -47,7 +47,7 @@ class SignUp extends React.Component {
 
   facebookLoginHandle(event) {
 
-
+    console.log('Button click <<<<<<<<<')
     var provider = new firebase.auth.FacebookAuthProvider();
     firebase.auth().signInWithRedirect(provider).then(function(result) {
       alert('bananas')
