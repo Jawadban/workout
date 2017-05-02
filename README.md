@@ -1,5 +1,5 @@
 
-WorkOut app beta is currently deployed at https://workout-beta.herokuapp.com
+WorkOut app Beta is currently in development mode and deployed at https://workout-beta.herokuapp.com
 
 Its a Real Time Workout platform for running with your friends which renders your calories burnt, current location map, route map until now, distance travelled and shows it against your connection anywhere in the world and they can look at your stats.
 
