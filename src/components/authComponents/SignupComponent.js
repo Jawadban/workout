@@ -64,6 +64,7 @@ class SignUp extends React.Component {
       var email = error.email;
       // The firebase.auth.AuthCredential type that was used.
       var credential = error.credential;
+      console.error(error)
       // ...
     });
 
