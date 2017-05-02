@@ -1,3 +1,4 @@
+/* jshint unused:false */
 import React, { Component } from 'react';
 import './App.css';
 import GoogleMapStatic from './googleMapsComponents/CurrentLocationMap.js';
