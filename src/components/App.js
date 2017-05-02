@@ -1,6 +1,6 @@
-import React, { Component } from 'react'; // eslint-disable-line no-alert
+import React, { Component } from 'react'; /* jshint unused:false */
 import './App.css';
-import GoogleMapStatic from './googleMapsComponents/CurrentLocationMap.js'; // eslint-disable-line no-alert
+import GoogleMapStatic from './googleMapsComponents/CurrentLocationMap.js'; /* jshint unused:false */
 import LogUserData from './renderComponents/LogUserData.js'
 import { Router, Route, Link, hashHistory } from 'react-router'
 import GoogleWholeRoute from './googleMapsComponents/WholeRoute.js'
