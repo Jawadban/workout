@@ -238,7 +238,7 @@ class App extends React.Component {
         }
         {
           this.state.coords.length > 0 && this.state.user ?
-            <AllUserData coords={this.state.coords} userData={this.state.totalDistanceTravelled}/> : full
+            <AllUserData coords={this.state.coords} userData={this.state.totalDistanceTravelled}/> : null
         }
         { 
           this.state.coords.length > 0 && this.state.user ?
