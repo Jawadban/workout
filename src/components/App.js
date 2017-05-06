@@ -1,12 +1,15 @@
 import React, { Component } from 'react'; 
 import './App.css';
+import GoogleMapStatic from './googleMapsComponents/CurrentLocationMap.js';
 import LogUserData from './renderComponents/LogUserData.js'
 import { Router, Route, Link, hashHistory } from 'react-router'
+import GoogleWholeRoute from './googleMapsComponents/WholeRoute.js'
 import * as firebase from 'firebase';
 import SignUp from './authComponents/SignupComponent.js'
 import LogIn from './authComponents/LoginComponent.js'
 import SignOut from './authComponents/SignoutComponent.js'
 import {getGeoLocation,  totalDistanceTravelled} from './googleMapsComponents/getUserCoordsFunctions.js'
+import FB from 'fb';
 import {config} from './authComponents/firebaseAuthConfig.js'
 import AllUserData from './renderComponents/UserProflieInfoCard.js'
 import StartRunning from './exerciseComponents/RunningComponent.js'
@@ -18,9 +21,7 @@ import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'mat
 // coord keeps the user location coordinates from the getUserLocation function
 export var coord = [];
 
-// Google Firebase initialized to use from FireBaseAutConfig 
-// file where the Firebase coniguration lives
-firebase.initializeApp(config);
+
 
 class App extends React.Component {
   constructor (props) {
@@ -192,6 +193,11 @@ class App extends React.Component {
 
   // clearing the setInterval Id's so that we dont have duplication of tasks being performed
   componentWillMount(){
+    
+    // Google Firebase initialized to use from FireBaseAutConfig 
+    // file where the Firebase coniguration lives
+    firebase.initializeApp(config);
+
     clearInterval(this.timerId);
     clearInterval(this.dbtimerId);
     clearInterval(this.getDbtimerId);
