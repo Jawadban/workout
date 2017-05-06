@@ -2,13 +2,11 @@ import React, { Component } from 'react';
 import './App.css';
 import LogUserData from './renderComponents/LogUserData.js'
 import { Router, Route, Link, hashHistory } from 'react-router'
-import GoogleWholeRoute from './googleMapsComponents/WholeRoute.js'
 import * as firebase from 'firebase';
 import SignUp from './authComponents/SignupComponent.js'
 import LogIn from './authComponents/LoginComponent.js'
 import SignOut from './authComponents/SignoutComponent.js'
 import {getGeoLocation,  totalDistanceTravelled} from './googleMapsComponents/getUserCoordsFunctions.js'
-import FB from 'fb';
 import {config} from './authComponents/firebaseAuthConfig.js'
 import AllUserData from './renderComponents/UserProflieInfoCard.js'
 import StartRunning from './exerciseComponents/RunningComponent.js'
