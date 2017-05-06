@@ -1,13 +1,9 @@
 import React, { Component } from 'react'; 
 import './App.css';
-import GoogleMapStatic from './googleMapsComponents/CurrentLocationMap.js';
 import LogUserData from './renderComponents/LogUserData.js'
 import { Router, Route, Link, hashHistory } from 'react-router'
 import GoogleWholeRoute from './googleMapsComponents/WholeRoute.js'
-//import { withGoogleMap } from "react-google-maps";
-//import Map from 'google-maps-react'
 import * as firebase from 'firebase';
-// import firebaseui from ('firebaseui');
 import SignUp from './authComponents/SignupComponent.js'
 import LogIn from './authComponents/LoginComponent.js'
 import SignOut from './authComponents/SignoutComponent.js'
@@ -83,7 +79,6 @@ class App extends React.Component {
               totalDistanceTravelled: totalDistanceTravelled
             })
             console.log(coord, 'These are the user coords')
-            //console.log(thisInst.state.coords, 'SSSETTTT STTATE COORDS')
           }
           , 1000)
       });
@@ -138,21 +133,19 @@ class App extends React.Component {
     })
   }
 
-  // here we are pushing the user coords to firebase Database.
+  // pushing the user coords to firebase Database.
   writeUserInfoDetails (coordArra) {
     firebase.database().ref('users/' + this.state.user.uid + '/userDetails').set({
       coord: coord
     });
   }
 
-  // here we are getting the user coord from firebase database
+  // getting the user coord from firebase database
   getUserInfoDetails () {
     console.log('<<<<<<<<<<<<<<<<<<<')
     const thisVal = this;
 
     firebase.database().ref('users/' + this.state.user.uid ).on('value', function(snapshot) {
-      //console.log('snapshot:- ' + snapshot.val().coord );
-      //const anotherSelf = this;
       if (snapshot.val()) {  
         thisVal.setState({
           dbCoordsNow: snapshot.val().coord,
@@ -164,36 +157,6 @@ class App extends React.Component {
 
   componentDidMount() {
     this.timerId = setInterval(() => this.tick(), 3000)
-
-    // this.writeUserData(this.state.coordPosNow)
-
-    // if(this.state.user){  
-    //   firebase.database().ref('users/' + this.state.user.uid).set({
-    //     coord: coord
-    //   });
-    // }
-
-
-    // setInterval( () => {
-
-    //   var database = firebase.database()
-    //   var ref = database.ref('users/' + this.state.user.uid + '/run' )
-    //   ref.set({coord: coord});
-    // }, 1000
-    // )
-
-
-
-    // if (this.state.user && coord) {
-    // }
-
-// function writeUserData(userId, name, email, imageUrl) {
-//   firebase.database().ref('users/' + 'userId').set({
-//     username: 'name',
-//     email: 'email',
-//     profile_picture : imageUrl
-//   });
-// }
 
     var val = this;
     firebase.auth().onAuthStateChanged(function(user) {
@@ -218,7 +181,6 @@ class App extends React.Component {
 
     this.state.user ?
     firebase.database().ref('users/' + this.state.user.uid ).on('value', function(snapshot) {
-      //console.log('snapshot:- ' + snapshot.val().coord );
       if (snapshot.val()) {  
         this.setState({
           dbCoordsNow: snapshot.val().coord,
@@ -228,13 +190,10 @@ class App extends React.Component {
     })
     : null
 
-//     var database = firebase.database()
-// var ref = database.ref('users')
-// ref.set({username: 'Bangash'});
   }
 
-  // clearing the setInterval Id's so that we dont have douplication of tasks being performed
-  compnoentWillMount(){
+  // clearing the setInterval Id's so that we dont have duplication of tasks being performed
+  componentWillMount(){
     clearInterval(this.timerId);
     clearInterval(this.dbtimerId);
     clearInterval(this.getDbtimerId);
@@ -244,7 +203,7 @@ class App extends React.Component {
     // const condition = this.state.coords ? this.state.coords[this.state.coords.length -1] : 'false';
     
     // checking if user is looged in.
-    const showNameIfLoggedin = this.state.user ? this.state.user: false;
+    const showNameIfLoggedin = this.state.user ? this.state.user: null;
     // console.log(this.state.user, 'THIS IS USER')
 
     return (
@@ -256,29 +215,29 @@ class App extends React.Component {
           }
           { (this.state.user) ? 
             <div style={{float: 'left', marginTop: '25px'}}>
-            <MuiThemeProvider>
-            <Card>
-              <CardHeader
-                title={showNameIfLoggedin.displayName}
-                subtitle={this.state.totalDistanceTravelled.toFixed(4) + " Miles Run "}
-                avatar={showNameIfLoggedin.photoURL}
-              />     
-                <RaisedButton label="Start Running" primary={true} onClick={this.handleSubmit}></RaisedButton>
-                <Link to="/PushUps"><RaisedButton label="Push Ups /\ \//\//\  /" primary={true} ></RaisedButton></Link>
+              <MuiThemeProvider>
+                <Card>
+                  <CardHeader
+                    title={showNameIfLoggedin.displayName}
+                    subtitle={this.state.totalDistanceTravelled.toFixed(4) + " Miles Run "}
+                    avatar={showNameIfLoggedin.photoURL}
+                  />     
+                    <RaisedButton label="Start Running" primary={true} onClick={this.handleSubmit}></RaisedButton>
+                    <Link to="/PushUps"><RaisedButton label="Push Ups /\ \//\//\  /" primary={true} ></RaisedButton></Link>
 
-            </Card> 
+                </Card> 
               </MuiThemeProvider>
-            </div> : false
+            </div> : null
           }
         </ul>
         {
           this.state.coords[0] && this.state.user ?
             <AllUserData coords={this.state.coords} userData={this.state.totalDistanceTravelled} 
-            name={showNameIfLoggedin.displayName} pic={showNameIfLoggedin.photoURL}/> : false
+            name={showNameIfLoggedin.displayName} pic={showNameIfLoggedin.photoURL}/> : null
         }
         {
           this.state.coords.length > 0 && this.state.user ?
-            <AllUserData coords={this.state.coords} userData={this.state.totalDistanceTravelled}/> : false
+            <AllUserData coords={this.state.coords} userData={this.state.totalDistanceTravelled}/> : full
         }
         { 
           this.state.coords.length > 0 && this.state.user ?
