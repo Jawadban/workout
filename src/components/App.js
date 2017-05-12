@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Router, Route, Link, hashHistory } from 'react-router'
 import * as firebase from 'firebase';
+// import 
 import SignUp from './authComponents/SignupComponent.js'
 import LogIn from './authComponents/LoginComponent.js'
 import SignOut from './authComponents/SignoutComponent.js'
