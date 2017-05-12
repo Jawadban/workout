@@ -1,23 +1,17 @@
 import React, { Component } from 'react'; 
 import './App.css';
-import GoogleMapStatic from './googleMapsComponents/CurrentLocationMap.js';
-import LogUserData from './renderComponents/LogUserData.js'
 import { Router, Route, Link, hashHistory } from 'react-router'
-import GoogleWholeRoute from './googleMapsComponents/WholeRoute.js'
 import * as firebase from 'firebase';
 import SignUp from './authComponents/SignupComponent.js'
 import LogIn from './authComponents/LoginComponent.js'
 import SignOut from './authComponents/SignoutComponent.js'
 import {getGeoLocation,  totalDistanceTravelled} from './googleMapsComponents/getUserCoordsFunctions.js'
-import FB from 'fb';
 import {config} from './authComponents/firebaseAuthConfig.js'
 import AllUserData from './renderComponents/UserProflieInfoCard.js'
 import StartRunning from './exerciseComponents/RunningComponent.js'
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
-
-
 // coord keeps the user location coordinates from the getUserLocation function
 export var coord = [];
 
@@ -26,8 +20,6 @@ class App extends React.Component {
     super (props)
     this.state = {
       user: null,
-      // userName:'',
-      // password:'',
       shoulGetGeoData: false,
       coords: [],
       coordPosNow: coord,
@@ -55,7 +47,6 @@ class App extends React.Component {
     event.preventDefault()
 
     var timeStamp = new Date()
-    // Math.floor(Date.now() / 1000)
     this.setState({
       timeStamp: timeStamp
     })
@@ -201,18 +192,15 @@ class App extends React.Component {
   }
 
   render () {    
-    // const condition = this.state.coords ? this.state.coords[this.state.coords.length -1] : 'false';
     
     // checking if user is looged in.
     const showNameIfLoggedin = this.state.user ? this.state.user: null;
-    // console.log(this.state.user, 'THIS IS USER')
 
     return (
       <div>
         <ul>    
           {
             this.state.user ? <SignOut/> : <SignUp />
-            //<h1>You are signed in</h1>  
           }
           { (this.state.user) ? 
             <div style={{float: 'left', marginTop: '25px'}}>
