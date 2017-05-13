@@ -1,15 +1,12 @@
-import React, { Component } from 'react'; 
+import React from 'react'; 
 import './App.css';
-import { Router, Route, Link, hashHistory } from 'react-router'
 import * as firebase from 'firebase';
 import Auth from './renderComponents/AuthComp'
+import CardComp from './renderComponents/CardComp'
 import {getGeoLocation,  totalDistanceTravelled} from './googleMapsComponents/getUserCoordsFunctions.js'
 import {config} from './authComponents/firebaseAuthConfig.js'
 import AllUserData from './renderComponents/UserProflieInfoCard.js'
-import StartRunning from './exerciseComponents/RunningComponent.js'
-import RaisedButton from 'material-ui/RaisedButton';
-import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
+
 // coord keeps the user location coordinates from the getUserLocation function
 export var coord = [];
 
@@ -18,7 +15,6 @@ class App extends React.Component {
     super (props)
     this.state = {
       user: null,
-      shoulGetGeoData: false,
       coords: [],
       coordPosNow: coord,
       dbCoordsNow: '', 
@@ -42,8 +38,6 @@ class App extends React.Component {
   handleSubmit (event) {
     const thisInst = this;
 
-    event.preventDefault()
-
     var timeStamp = new Date()
     this.setState({
       timeStamp: timeStamp
@@ -60,7 +54,7 @@ class App extends React.Component {
       this.setState({
         intervalId: setInterval(
           function () {
-            getGeoLocation (),
+            getGeoLocation ()
             thisInst.setState({
               totalDistanceTravelled: totalDistanceTravelled
             })
@@ -165,17 +159,16 @@ class App extends React.Component {
       }
     });
 
-    this.state.user ?
-    firebase.database().ref('users/' + this.state.user.uid ).on('value', function(snapshot) {
-      if (snapshot.val()) {  
-        this.setState({
-          dbCoordsNow: snapshot.val().coord,
-        });
-      }
-      console.log(this.state.dbCoordsNow, '>>>>>>>>')
-    })
-    : null
-
+    if (this.state.user) {
+      firebase.database().ref('users/' + this.state.user.uid ).on('value', function(snapshot) {
+        if (snapshot.val()) {  
+          this.setState({
+            dbCoordsNow: snapshot.val().coord,
+          });
+        }
+        console.log(this.state.dbCoordsNow, '>>>>>>>>')
+      })
+    } 
   }
 
   // clearing the setInterval Id's so that we dont have duplication of tasks being performed
@@ -190,44 +183,21 @@ class App extends React.Component {
   }
 
   render () {    
-          // {
-          //   this.state.user ? <SignOut/> : <SignUp />
-          // }
-    
-    // checking if user is looged in.
-    const showNameIfLoggedin = this.state.user ? this.state.user: null;
-
     return (
 
       <div>
         <div> 
           <Auth userInfo={this.state.user} />
-          { (this.state.user) ? 
-            <div style={{float: 'left', marginTop: '25px', marginLeft: '25px'}}>
-              <MuiThemeProvider>
-                <Card>
-                  <CardHeader
-                    title={showNameIfLoggedin.displayName}
-                    subtitle={this.state.totalDistanceTravelled.toFixed(4) + " Miles Run "}
-                    avatar={showNameIfLoggedin.photoURL}
-                  />     
-                    <RaisedButton label="Start Running" primary={true} onClick={this.handleSubmit}></RaisedButton>
-                    <Link to="/PushUps"><RaisedButton label="Push Ups" primary={true} ></RaisedButton></Link>
-                    <RaisedButton label="Sit Ups" primary={true} ></RaisedButton>
-
-                </Card> 
-              </MuiThemeProvider>
-            </div> : null
+          {
+            (this.state.user) ? <CardComp userInfo={this.state.user} 
+            totalDistanceTravelled={this.state.totalDistanceTravelled} 
+            buttonClick={this.handleSubmit.bind(this)}/> : null
           }
         </div>
         {
           this.state.coords[0] && this.state.user ?
             <AllUserData coords={this.state.coords} userData={this.state.totalDistanceTravelled} 
-            name={showNameIfLoggedin.displayName} pic={showNameIfLoggedin.photoURL}/> : null
-        }
-        {
-          this.state.coords.length > 0 && this.state.user ?
-            <AllUserData coords={this.state.coords} userData={this.state.totalDistanceTravelled}/> : null
+            userInfo={this.state.user} /> : null
         }
         { 
           this.state.coords.length > 0 && this.state.user ?
@@ -235,7 +205,8 @@ class App extends React.Component {
             <ul>
               <h1 style={{color: 'white'}}><span style={{color: 'red'}}>Dani</span> in <span style={{color: 'pink'}}>Tokoyo</span></h1>
             </ul>
-            <AllUserData coords={[{Latitude :35.604561, Longitude: 139.7901791}]} userData={this.state.totalDistanceTravelled}/>
+            <AllUserData coords={[{Latitude :35.604561, Longitude: 139.7901791}]} userData={this.state.totalDistanceTravelled}
+            userInfo={this.state.user}/>
           </div>
           : null
         }

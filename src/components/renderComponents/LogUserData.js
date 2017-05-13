@@ -1,5 +1,4 @@
-import React from 'react';
-
+import React from 'react'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import {Card, CardActions, CardHeader, CardMedia, CardTitle, CardText} from 'material-ui/Card';
 import FlatButton from 'material-ui/FlatButton';
@@ -21,21 +20,7 @@ const styles = {
 
 class LogUserData extends React.Component {
 
-
-  // handleUserData (event) {
-  //   this.setState({
-  //     value: this.props.firstName
-  //   })
-  // }
-
-  // componentWillReceiveProps (nextProps) {
-  //   this.setState({
-  //     value: nextProps.userData
-  //   })
-  // }
-
   render () {
-    const user = this.props.name
     return (
       <div style={{float: 'left', marginTop: '65px'}}>
         <ul>
@@ -43,9 +28,9 @@ class LogUserData extends React.Component {
             <Paper zDepth={1} >
             <Card>
               <CardHeader
-                title={this.props.name}
+                title={this.props.userInfo.displayName}
                 subtitle={this.props.userData.toFixed(4) + " Miles Run "}
-                avatar={this.props.pic}
+                avatar={this.props.userInfo.photoURL}
                 style={{marginRight: '1px'}}
               />     
             </Card> 

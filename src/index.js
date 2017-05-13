@@ -10,6 +10,7 @@ ReactDOM.render(
 	<Router history={hashHistory}>
     <Route path="/" component={App}/>
     <Route path="/PushUps" component={PushUps}/>
+    <Route path="/SitUps" component={PushUps} />
   </Router>,
   document.getElementById('root'))
 
