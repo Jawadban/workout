@@ -20,13 +20,7 @@ const styles = {
 
 
 class LogUserData extends React.Component {
-  constructor (props) {
-    super (props)
-    // this.handleUserData = this.handleUserData.bind(this)
-    // this.state = {
-    //   value: this.props.userData,
-    // }
-  }
+
 
   // handleUserData (event) {
   //   this.setState({

@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import { Router, Route, Link, hashHistory } from 'react-router'
 import * as firebase from 'firebase';
-// import 
-import SignUp from './authComponents/SignupComponent.js'
-import LogIn from './authComponents/LoginComponent.js'
-import SignOut from './authComponents/SignoutComponent.js'
+import Auth from './renderComponents/AuthComp'
 import {getGeoLocation,  totalDistanceTravelled} from './googleMapsComponents/getUserCoordsFunctions.js'
 import {config} from './authComponents/firebaseAuthConfig.js'
 import AllUserData from './renderComponents/UserProflieInfoCard.js'
@@ -193,18 +190,20 @@ class App extends React.Component {
   }
 
   render () {    
+          // {
+          //   this.state.user ? <SignOut/> : <SignUp />
+          // }
     
     // checking if user is looged in.
     const showNameIfLoggedin = this.state.user ? this.state.user: null;
 
     return (
+
       <div>
-        <ul>    
-          {
-            this.state.user ? <SignOut/> : <SignUp />
-          }
+        <div> 
+          <Auth userInfo={this.state.user} />
           { (this.state.user) ? 
-            <div style={{float: 'left', marginTop: '25px'}}>
+            <div style={{float: 'left', marginTop: '25px', marginLeft: '25px'}}>
               <MuiThemeProvider>
                 <Card>
                   <CardHeader
@@ -213,13 +212,14 @@ class App extends React.Component {
                     avatar={showNameIfLoggedin.photoURL}
                   />     
                     <RaisedButton label="Start Running" primary={true} onClick={this.handleSubmit}></RaisedButton>
-                    <Link to="/PushUps"><RaisedButton label="Push Ups /\ \//\//\  /" primary={true} ></RaisedButton></Link>
+                    <Link to="/PushUps"><RaisedButton label="Push Ups" primary={true} ></RaisedButton></Link>
+                    <RaisedButton label="Sit Ups" primary={true} ></RaisedButton>
 
                 </Card> 
               </MuiThemeProvider>
             </div> : null
           }
-        </ul>
+        </div>
         {
           this.state.coords[0] && this.state.user ?
             <AllUserData coords={this.state.coords} userData={this.state.totalDistanceTravelled} 
