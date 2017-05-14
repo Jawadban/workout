@@ -9,9 +9,6 @@ class SignOut extends React.Component {
   constructor (props) {
     super (props)
     this.handleSignOut = this.handleSignOut.bind(this)
-    // this.state = {
-    //   value: this.props.userData,
-    // }
   }
 
   handleSignOut (event) {
@@ -24,18 +21,19 @@ class SignOut extends React.Component {
 		});
   }
 
-  // componentWillReceiveProps (nextProps) {
-  //   this.setState({
-  //     value: nextProps.userData
-  //   })
-  // }
-
   render () {
     return (
-      <div style={{float: 'right', marginRight: '56px', marginTop: '25px'}}>  
-        <MuiThemeProvider>
-          <RaisedButton label="Sign Out" primary={true} onClick={this.handleSignOut}/>
-        </MuiThemeProvider>
+      <div>
+        <div style={{float: 'right', marginRight: '56px', marginTop: '25px'}}>  
+          <MuiThemeProvider>
+            <RaisedButton label="Sign Out" primary={true} onClick={this.handleSignOut}/>
+          </MuiThemeProvider>
+        </div>
+
+        <div style={{float: 'right', marginRight: '-100px', marginTop: '210px'}}>  
+          <iframe width="335" height="250" src="https://www.youtube.com/embed/gF0rrpMH-Jo?autoplay=1"
+          ></iframe>
+        </div>
       </div>
     )
   }

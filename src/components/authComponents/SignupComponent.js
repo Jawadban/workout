@@ -157,27 +157,22 @@ class SignUp extends React.Component {
 
 
     return (
-
-      <div>
+      <div style={{margin: 50}}>
         <form onSubmit={this.handleSubmit} style={{float: 'left'}}>
-           <MuiThemeProvider>
+          <MuiThemeProvider>
             <Paper zDepth={2}>
               <TextField hintText="First name" name='userName' style={style} 
-              value={this.state.userName} 
-              onChange={this.handleChange} 
-              underlineShow={false} 
+                value={this.state.userName} 
+                onChange={this.handleChange} 
+                underlineShow={false} 
               />
-
               <Divider />
-
               <TextField hintText="Email address" type="email" name='email' 
-              value={this.state.email} 
-              onChange={this.handleChange} 
-              style={style} underlineShow={false} 
+                value={this.state.email} 
+                onChange={this.handleChange} 
+                style={style} underlineShow={false} 
               />
-
               <Divider />
-
               <TextField hintText="password" type="password" name='password' value={this.state.password} onChange={this.handleChange} style={style} underlineShow={false} />
               <Divider />
             </Paper>

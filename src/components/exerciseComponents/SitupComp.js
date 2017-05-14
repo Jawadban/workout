@@ -4,7 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Router, Route, Link, hashHistory } from 'react-router'
 
 
-export default class PushUps extends React.Component {
+export default class Situp extends React.Component {
 	handleSubmit() {
 		
 	}
@@ -13,12 +13,11 @@ export default class PushUps extends React.Component {
 		return (
 	    <div style={{float: 'left', margin: 50}}>
 	    	<div>
-		    	<iframe width="560" height="315" src="https://www.youtube.com/embed/_UBOxUl0Sl4"
-		    	frameborder="0" allowfullscreen></iframe>
+		    	<iframe width="560" height="315" src="https://www.youtube.com/embed/66FxknOKq3Q"></iframe>
 	    	</div>
 	    	<div style={{marginTop: 50}}>
 		      <MuiThemeProvider >
-		        <RaisedButton label="Push UP" primary={true} onClick={this.handleSubmit.bind(this)}/>
+		        <RaisedButton label="Situp" primary={true} onClick={this.handleSubmit.bind(this)}/>
 		      </MuiThemeProvider>
 		      <MuiThemeProvider >
 		        <Link to='/'><RaisedButton label="Back" primary={true} style={{marginLeft: 30}}/></Link>
@@ -28,5 +27,3 @@ export default class PushUps extends React.Component {
 	    );
 	}
 }
-
-

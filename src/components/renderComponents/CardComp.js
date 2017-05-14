@@ -6,12 +6,23 @@ import { Router, Route, Link, hashHistory } from 'react-router'
 import LogUserData from './LogUserData'
 
 export default class CardComp extends Component {
+  constructor(props){
+    super(props)
+    this.state = {
+      textInfo: false
+    }
+  }
 
 	handleSubmit() {
-		this.props.buttonClick()
-	}
+    this.setState({
+      textInfo: !this.state.textInfo
+    })
+    this.props.buttonClick()
+  }
+
 
 	render() {
+    let startedRunning = this.state.textInfo ? 'Stop Running' : 'Start Running'
 		return (
       <div style={{float: 'left', marginTop: '25px', marginLeft: '25px'}}>
         <MuiThemeProvider>
@@ -20,12 +31,11 @@ export default class CardComp extends Component {
               title={this.props.userInfo.displayName}
               subtitle={this.props.totalDistanceTravelled.toFixed(4) + " Miles Run "}
               avatar={this.props.userInfo.photoURL}
-            />     
-              <RaisedButton label="Start Running" primary={true} 
-              onClick={this.handleSubmit.bind(this)}></RaisedButton>
-              <Link to="/PushUps"><RaisedButton label="Push Ups" primary={true} ></RaisedButton></Link>
-              <RaisedButton label="Sit Ups" primary={true} ></RaisedButton>
-
+            />
+            <RaisedButton label={startedRunning} primary={true}
+            onClick={this.handleSubmit.bind(this)} style={{width:150, height:30}}></RaisedButton>
+            <Link to="/PushUps"><RaisedButton label="Push Ups" primary={true} style={{marginLeft: 0, height:30}}></RaisedButton></Link>
+            <Link to="/Situps"><RaisedButton label="Sit Ups" primary={true} style={{marginLeft: 0, height:30}}></RaisedButton></Link>
           </Card> 
         </MuiThemeProvider>
         <LogUserData userInfo={this.props.userInfo} userData={this.props.totalDistanceTravelled} />

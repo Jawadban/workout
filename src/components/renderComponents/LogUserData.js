@@ -31,7 +31,7 @@ class LogUserData extends React.Component {
                 title={this.props.userInfo.displayName}
                 subtitle={this.props.userData.toFixed(4) + " Miles Run "}
                 avatar={this.props.userInfo.photoURL}
-                style={{marginRight: '1px'}}
+                style={{marginRight: '0px'}}
               />     
             </Card> 
             </Paper>
