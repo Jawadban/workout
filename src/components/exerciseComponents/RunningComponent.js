@@ -7,8 +7,9 @@ export default class StartRunning extends React.Component {
 	render () {
 		return (
 	    <div style={{float: 'left'}}>
+	    	<h1>thisis the running compon</h1>
 	      <MuiThemeProvider>
-	        <RaisedButton label="Start Running" primary={true} style={true} onClick={this.handleSubmit}/>
+	        <RaisedButton label="Start Running" primary={true} onClick={this.handleSubmit}/>
 	      </MuiThemeProvider>
 	    </div>
 	    );

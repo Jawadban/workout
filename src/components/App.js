@@ -7,6 +7,7 @@ import {getGeoLocation,  totalDistanceTravelled} from './googleMapsComponents/ge
 import {config} from './authComponents/firebaseAuthConfig.js'
 import AllUserData from './renderComponents/UserProflieInfoCard.js'
 
+
 // coord keeps the user location coordinates from the getUserLocation function
 export var coord = [];
 
@@ -78,7 +79,7 @@ class App extends React.Component {
       this.setState({
         timerId: setInterval(
           () => {
-            // Here we are linking our firebase database with the user location coordinates 'coord'
+            // Linking our firebase database with the user location coordinates 'coord'
             var database = firebase.database()
             var ref = database.ref('users/' + this.state.user.uid + '/run/' + timeStampForThisRunningInstance )
             ref.set({
@@ -189,9 +190,11 @@ class App extends React.Component {
         <div> 
           <Auth userInfo={this.state.user} />
           {
-            (this.state.user) ? <CardComp userInfo={this.state.user} 
+            (this.state.user) ? 
+            <CardComp userInfo={this.state.user} 
             totalDistanceTravelled={this.state.totalDistanceTravelled} 
-            buttonClick={this.handleSubmit.bind(this)}/> : null
+            buttonClick={this.handleSubmit.bind(this)}
+            coords={this.state.coords}/> : null
           }
         </div>
         {

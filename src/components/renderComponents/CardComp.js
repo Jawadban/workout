@@ -21,7 +21,8 @@ export default class CardComp extends Component {
               subtitle={this.props.totalDistanceTravelled.toFixed(4) + " Miles Run "}
               avatar={this.props.userInfo.photoURL}
             />     
-              <RaisedButton label="Start Running" primary={true} onClick={this.handleSubmit.bind(this)}></RaisedButton>
+              <RaisedButton label="Start Running" primary={true} 
+              onClick={this.handleSubmit.bind(this)}></RaisedButton>
               <Link to="/PushUps"><RaisedButton label="Push Ups" primary={true} ></RaisedButton></Link>
               <RaisedButton label="Sit Ups" primary={true} ></RaisedButton>
 
