@@ -24,6 +24,7 @@ export default class CardComp extends Component {
 	render() {
     let startedRunning = this.state.textInfo ? 'Stop Running' : 'Start Running'
 		return (
+      <div>
       <div style={{float: 'left', marginTop: '25px', marginLeft: '25px'}}>
         <MuiThemeProvider>
           <Card>
@@ -38,8 +39,9 @@ export default class CardComp extends Component {
             <Link to="/Situps"><RaisedButton label="Sit Ups" primary={true} style={{marginLeft: 0, height:30}}></RaisedButton></Link>
           </Card> 
         </MuiThemeProvider>
-        <LogUserData userInfo={this.props.userInfo} userData={this.props.totalDistanceTravelled} />
+        <LogUserData userInfo={this.props.userInfo} userData={this.props.totalDistanceTravelled}/>
       </div> 
-		)
+		</div>
+    )
 	}
 }

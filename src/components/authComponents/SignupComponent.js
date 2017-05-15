@@ -142,48 +142,51 @@ class SignUp extends React.Component {
     // });
 
 
-    const DividerExampleForm = () => (
-  <Paper zDepth={2}>
-    <TextField hintText="First name" style={style} underlineShow={false} />
-    <Divider />
-    <TextField hintText="Middle name" style={style} underlineShow={false} />
-    <Divider />
-    <TextField hintText="Last name" style={style} underlineShow={false} />
-    <Divider />
-    <TextField hintText="Email address" style={style} underlineShow={false} />
-    <Divider />
-  </Paper>
-);
-
-
     return (
-      <div style={{margin: 50}}>
-        <form onSubmit={this.handleSubmit} style={{float: 'left'}}>
-          <MuiThemeProvider>
-            <Paper zDepth={2}>
-              <TextField hintText="First name" name='userName' style={style} 
-                value={this.state.userName} 
-                onChange={this.handleChange} 
-                underlineShow={false} 
-              />
-              <Divider />
-              <TextField hintText="Email address" type="email" name='email' 
-                value={this.state.email} 
-                onChange={this.handleChange} 
-                style={style} underlineShow={false} 
-              />
-              <Divider />
-              <TextField hintText="password" type="password" name='password' value={this.state.password} onChange={this.handleChange} style={style} underlineShow={false} />
-              <Divider />
-            </Paper>
-          </MuiThemeProvider>
-          <MuiThemeProvider>
-            <RaisedButton label="SignUp" value="SignUp" type="submit" primary={true} />
-          </MuiThemeProvider>
-          <MuiThemeProvider>
-            <RaisedButton label="Login With Facebook" onClick={this.facebookLoginHandle} primary={true} />
-          </MuiThemeProvider>
-        </form>
+      <div>
+
+      <img src="logo.png" style={{height:128, marginTop: 35, marginLeft:165, 
+        marginBottom:30, verticalAlign:'left'}} />
+
+        <div >
+          <div style={{ float: 'left', marginLeft: 50, verticalAlign:'left'}}>
+          <iframe width="340" height="191" src="https://www.youtube.com/embed/gZEBDahq7F0?autoplay=1&controls=0&showinfo=0"
+          frameborder="0" ></iframe>
+
+          <div>
+          <form onSubmit={this.handleSubmit} style={{float: 'left', marginTop: 30, 
+          marginBottom:22, width: 343}}>
+            <MuiThemeProvider>
+              <Paper zDepth={2}>
+                <TextField hintText="First name" name='userName' style={style} 
+                  value={this.state.userName} 
+                  onChange={this.handleChange} 
+                  underlineShow={false} 
+                />
+                <Divider />
+                <TextField hintText="Email address" type="email" name='email' 
+                  value={this.state.email} 
+                  onChange={this.handleChange} 
+                  style={style} underlineShow={false} 
+                />
+                <Divider />
+                <TextField hintText="password" type="password" name='password' value={this.state.password}
+                onChange={this.handleChange} style={style} underlineShow={false} />
+                <Divider />
+              </Paper>
+            </MuiThemeProvider>
+            <MuiThemeProvider>
+              <RaisedButton label="SignUp" value="SignUp" type="submit" primary={true}
+              style={{width:146.5}}/>
+            </MuiThemeProvider>
+            <MuiThemeProvider>
+              <RaisedButton label="Login With Facebook" onClick={this.facebookLoginHandle}
+              primary={true} />
+            </MuiThemeProvider>
+          </form>
+          </div>
+          </div>
+        </div>
       </div>
     );
   }
