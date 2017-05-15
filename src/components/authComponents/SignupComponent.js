@@ -145,7 +145,7 @@ class SignUp extends React.Component {
     return (
       <div>
 
-      <img src="logo.png" style={{height:128, marginTop: 35, marginLeft:165, 
+      <img src="logo.png" style={{height:110, marginTop: 35, marginLeft:165, 
         marginBottom:30, verticalAlign:'left'}} />
 
         <div >
