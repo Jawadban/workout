@@ -31,7 +31,7 @@ class SignOut extends React.Component {
         </div>
 
         <div style={{float: 'right', marginRight: '-100px', marginTop: '210px'}}>  
-          <iframe width="335" height="250" src="https://www.youtube.com/embed/gF0rrpMH-Jo?autoplay=1"
+          <iframe width="335" height="188" src="https://www.youtube.com/embed/gF0rrpMH-Jo?autoplay=1"
           ></iframe>
         </div>
       </div>
