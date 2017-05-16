@@ -150,7 +150,7 @@ class SignUp extends React.Component {
 
         <div >
           <div style={{ float: 'left', marginLeft: 50, verticalAlign:'left'}}>
-          <iframe width="340" height="191" src="https://www.youtube.com/embed/gZEBDahq7F0?autoplay=1&controls=0&showinfo=0"
+          <iframe width="340" height="191" src="https://www.youtube.com/embed/gZEBDahq7F0?autoplay=3&controls=0&showinfo=0"
           frameborder="0" ></iframe>
 
           <div>
