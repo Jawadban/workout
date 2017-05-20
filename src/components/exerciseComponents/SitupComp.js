@@ -1,8 +1,8 @@
+/* eslint-disable */
 import React from 'react';
 import RaisedButton from 'material-ui/RaisedButton';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import { Router, Route, Link, hashHistory } from 'react-router'
-
 
 export default class Situp extends React.Component {
 	handleSubmit() {

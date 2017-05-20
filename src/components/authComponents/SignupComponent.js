@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import * as firebase from 'firebase';
 import Divider from 'material-ui/Divider';
@@ -6,15 +7,62 @@ import TextField from 'material-ui/TextField';
 import FB from'fb';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import RaisedButton from 'material-ui/RaisedButton';
+import axios from 'axios'
 
 
 import injectTapEventPlugin from 'react-tap-event-plugin';
 injectTapEventPlugin();
 
+let obj = []
 
 const style = {
   marginLeft: 20,
 };
+
+class News extends React.Component {
+
+  constructor(props) {
+    super(props)
+    this.state = {
+      newsObj: null
+
+    }
+  }
+
+  componentDidMount() {
+    let thisInst = this
+
+    this.
+
+    // GET request for remote image
+    axios({
+      method:'get',
+      url:'https://newsapi.org/v1/articles?source=techcrunch&apiKey=b7f111332ea241dd9d93a86228743d53',
+      responseType:'stream'
+    })
+      .then(function(response) {
+        console.log(response.data.articles)
+        thisInst.setState({
+          newsObj: response.data.articles
+        })
+    console.log(this.state.newsObj)
+    });
+
+  }
+
+
+  render() {
+    var newsTitle = this.state.newsObj? this.state.newsObj[0].title: null
+    var newsDes = this.state.newsObj? this.state.newsObj[0].description: null
+
+    return(
+      <div style={{float:'right', color: 'white'}}>
+        <h4>{newsTitle}</h4>
+        <p>{newsDes}</p>
+      </div>
+    )
+  }
+}
 
 class SignUp extends React.Component {
   constructor(props) {
@@ -122,6 +170,7 @@ class SignUp extends React.Component {
     event.preventDefault();
   }
 
+
   render() {
     // var provider = new firebase.auth.FacebookAuthProvider();
     // firebase.auth().signInWithPopup(provider).then(function(result) {
@@ -142,6 +191,8 @@ class SignUp extends React.Component {
     // });
 
 
+
+
     return (
       <div>
 
@@ -150,9 +201,9 @@ class SignUp extends React.Component {
 
         <div >
           <div style={{ float: 'left', marginLeft: 50, verticalAlign:'left'}}>
-          <iframe width="340" height="191" src="https://www.youtube.com/embed/gZEBDahq7F0?autoplay=1&controls=0&showinfo=0"
-          frameborder="0" ></iframe>
-
+          <iframe width="340" height="191" 
+          src="https://www.youtube.com/embed/gZEBDahq7F0?autoplay=1&controls=0&showinfo=0"
+          />
           <div>
           <form onSubmit={this.handleSubmit} style={{float: 'left', marginTop: 30, 
           marginBottom:22, width: 343}}>

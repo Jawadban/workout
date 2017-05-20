@@ -11,10 +11,11 @@ import RunningComponent from './components/exerciseComponents/RunningComponent'
 
 ReactDOM.render(
 	<Router history={browserHistory}>
-    <Route path="/" component={App} />
-	  <Route path="/PushUps" component={PushUps}/>
-	  <Route path="/Run" component={RunningComponent} />
-	  <Route path="/SitUps" component={Situp} />
+    <Route path="/" component={App} >
+		  <Route path="/PushUps" component={PushUps}/>
+		  <Route path="/Run" component={RunningComponent} />
+		  <Route path="/SitUps" component={Situp} />
+		</Route>
   </Router>,
   document.getElementById('root'))
 

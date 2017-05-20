@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react';
 import GoogleWholeRoute from '../googleMapsComponents/WholeRoute.js'
 import GoogleMapStatic from '../googleMapsComponents/CurrentLocationMap.js';
